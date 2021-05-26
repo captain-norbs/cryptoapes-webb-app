@@ -1,0 +1,25 @@
+from django.db import models
+
+class Cryptoape(models.Model):
+    id = models.IntegerField(required=True)
+    Type = models.CharField(max_length=200, required=True)
+    Eyes = models.CharField(max_length=200, required=True)
+    Mouth = models.CharField(max_length=200, required=True)
+    Shirt = models.CharField(max_length=200)
+    Head = models.CharField(max_length=200)
+    Beard = models.CharField(max_length=200)
+    Ears = models.CharField(max_length=200)
+    Nose = models.CharField(max_length=200)
+    Glasses = models.CharField(max_length=200)
+    Chain = models.CharField(max_length=200)
+    Attributes = models.IntegerField(required=True)
+    Rarity = models.CharField(max_length=200, required=True)
+    Brains = models.CharField(max_length=200)
+    Strength = models.CharField(max_length=200)
+    Speed = models.CharField(max_length=200)
+    Bananas = models.CharField(max_length=200)
+    Rarity_multiplier = models.IntegerField(required=True)
+    ETH_base_price = models.FloatField(required=True)
+    ETH_base_price_with_multiplier = models.FloatField(required=True)
+    File = models.CharField(max_length=200, required=True)
+    
