@@ -5,8 +5,285 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="ROBOTS" content="ALL" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fa7221f93f.js" crossorigin="anonymous"></script>
+    <style>
+      body {
+        font-family: 'Roboto', 'Open Sans', sans-serif;
+        min-height: 100vh;
+      }
+      nav {
+        display: inline-block;
+        width: 100%;
+      }
+      .nav-links, .nav-links-left {
+        display: flex;
+        align-items: center;
+      }
+      .nav-links {
+        margin: 52px;
+        justify-content: space-between;
+        max-width: 1440px;
+      }
+      .nav-links-left {
+        justify-content: space-between;
+      }
+      .nav-links-left > .nav-link {
+        margin-left: 40px;
+      }
+      div.nav-link > a {
+        text-decoration: underline;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        color: #2A0000;
+
+      }
+      div.nav-link.selected > a {
+        text-decoration: none;
+      }
+      div.nav-link-prominent > a {
+        text-decoration: none;
+        padding: 8px 24px;
+        background: #97E490;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        box-shadow: 4px 4px 0px #000000;
+      }
+      .homepage-blurb {
+        font-size: 64px;
+        margin: auto;
+        max-width: 640px;
+        font-weight: 700;
+        margin-top: 192px;
+      }
+      .homepage-link {
+        display: flex;
+        margin-top: 140px;
+      }
+      .homepage-link > a {
+        background: #FFFFFF;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        box-shadow: 4px 4px 0px #000000;
+        color: #000;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 26px 24px;
+        margin: auto;
+      }
+      ._8-bit-apes-page {
+        display: flex;
+        justify-content: center;
+      
+      }
+      ._8-bit-apes-intro, .about-page-content {
+        max-width: 640px;
+      }
+      .text-body-link {
+        color: #000;
+        font-weight: 700;
+      }
+      .page-h1 {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 63px;
+      }
+      .page-h2 {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 56px;
+      }
+      .sample-ape {
+        display: flex;
+      }
+      .sample-ape-img {
+        margin-right: 40px;
+      }
+      .sample-ape-text {
+        font-weight: 700;
+      }
+      .cta-link {
+        display: flex;
+        justify-content: center;
+      }
+      .cta-link > a {
+        background: #FFFFFF;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        box-shadow: 4px 4px 0px #000000;
+        padding: 20px 24px;
+        text-decoration: none;
+      }
+      .cta-link > a > span {
+        padding: 20px 24px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+      }
+      .marketplace-instructions {
+        padding-inline-start: 16px;
+      }
+      .about-page-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 52px;
+      }
+      .mobile-only {
+        display: none;
+      }
+      .desktop-only {
+        display: block;
+      }
+      @media only screen and (max-width: 776px) {
+        .nav-links, .nav-links-left {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav-links {
+          margin: 14px 16px;
+          position: relative;
+        }
+        .nav-links-left > .nav-link {
+          margin-left: 0;
+        }
+        .nav-link {
+          margin-bottom: 11px;
+        }
+        .nav-link-prominent {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+        .mobile-only {
+          display: block;
+        }
+        .desktop-only {
+          display: none;
+        }
+        .nav-separator {
+          height: 4px;
+          margin-left: -8px;
+          width: 105%;
+          background-color: rgba(0, 0, 0, 0.15);
+        }
+        .homepage, ._8-bit-apes-page, .about-page {
+          padding: 0 16px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div>welcome to index</div>
+    <nav>
+      <div class="nav-links">
+        <div class="nav-link selected"><a href="/">millionpoundape/</a></div>
+        <div class="nav-links-left">
+          <div class="nav-link"><a href="/8-bit-apes">8-bit apes</a></div>
+          <div class="nav-link"><a href="/about">About MPA</a></div>
+          <div class="nav-link"><a href="https://twitter.com/millionpoundape">Twitter</a></div>
+          <div class="nav-link nav-link-prominent"><a href="https://opensea.io">Buy apes <i class="fas fa-external-link-alt"></i></a></div>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-only nav-separator"></div>
+    <div class="content-wrapper">
+      <div class="homepage" style="display:none;">
+        <div class="homepage-blurb">
+          "You want truth, you can't handle truth"
+        </div>
+        <div class="homepage-link">
+          <a href="/8-bit-apes">8-bit apes</a>
+        </div>
+      </div>
+      <div class="_8-bit-apes-page" style="display:none;">
+        <div class="_8-bit-apes-intro">
+          <div class="page-h1">8-bit apes</div>
+          <br>
+          <div>Apes with attitude. 10,000 pixel primates inspired by the smooth brain humans over at R/Wallstreetbets. Uniquely collectible limited edition characters that include a proof of ownership stored on the Ethereum blockchain.</div>
+          <br>
+          <div>They are a new wave in the modern CryptoArt movement. 8-bit-apes are "Non-Fungible Tokens" on the Ethereum network and part of the ERC standard that powers most digital art and collectibles.</div>
+          <br>
+          <!-- baner goes here (desktop & mobile) -->
+          <br>
+          <div>The 8 bit apes are uniquely hand drawn characters, released in batches. No two are exactly alike and each one of them can be bought and sold on the Ethereum blockchain. They can be purchased from the <a class="text-body-link" href="https://opensea.io">Opensea marketplace</a>. Via this market you can buy or bid on apes for sale.</div>
+          <br>
+          <div>See the <a class="text-body-link" href="#how-do-i-get-ape">marketplace instructions</a> below to acquire your very own ape. Follow <a class="text-body-link" href="https://twitter.com/millionpoundape">@millionpoundape</a> on twitter for news and updates of releases.</div>
+          <br>
+          <div class="page-h2">What 8-bit ape?</div>
+          <br>
+          <div>The 8-bit-apes follow the original Cryptopunks and are 24x24 pixel art images inspired by the fearless members of Reddit in <a class="text-body-link" href="https://www.reddit.com/r/wallstreetbets">R/wallstreetbets</a>. Most are chill normal apes, but mixed among the ranks are Space apes, Green apes, Clown apes, WallStreetBets apes and even the odd Cyborg. Every ape has their own unique combination of features, however some are much rarer than others like the zero trait apes.</div>
+          <br>
+          <div class="sample-ape-list">
+            <div class="sample-ape">
+              <div class="sample-ape-img">img here</div>
+              <div class="sample-ape-text">
+                GOLDEN apes are the rarest of apes and the pure 24-carat-ape (zero trait) is the rarest of all.
+              </div>
+            </div>
+            <br>
+            <div class="sample-ape">
+              <div class="sample-ape-img">img here</div>
+              <div class="sample-ape-text">
+                WSB apes are identified by the red bandanna.
+              </div>
+            </div>
+            <br>
+            <div class="sample-ape">
+              <div class="sample-ape-img">img here</div>
+              <div class="sample-ape-text">
+                Keep a lookout for our special guest 8-bit-apes like <a class="text-body-link" href="https://www.youtube.com/channel/UC0patpmwYbhcEUap0bTX3JQ">RoaringKitty</a> 👀
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="cta-link"><a href="https://opensea.io"><span>Check out all the different types of ape</span><i class="fas fa-arrow-right"></i></a></div>
+          <br>
+          <br>
+          <div class="page-h2">What all fuss about?</div>
+          <br>
+          <div>Crypto currency was made famous by the meteroic rise of Bitcoin. It was designed just to transact and store ownership of the Bitcoin token itself, many refer to it as digital gold because it is used as a store of wealth. Ethereum is a successor to Bitcoin which allows computer code to be executed on the blockchain (contracts) and the results of this to be stored forever (immutable). Ethereum allows everyone to deploy their own code, show each user the result and then agree that the code was executed correctly. The beauty of Etherium is that it is decentralised and populist. Ayone can use it to develop, trade and exchange. It is the medium most popular for creating and distributing #NFTs.</div>
+          <br>
+          <div class="page-h2" id="how-do-i-get-ape">How do I get ape?</div>
+          <br>
+          <ol class="marketplace-instructions">
+            <li>Apes are released in mixed batches and then listed on the <a href="https://opensea.io" class="text-body-link">Opensea Marketplace</a>.</li>
+            <br>
+            <li>Download and install a Chrome browser plugin called <a href="https://metamask.io/download.html" class="text-body-link">MetaMask</a>. This will allow websites (that you authorize) access to your Ethereum account.</li>
+            <br>
+            <li>You’ll need to buy some Ether. The MetaMask plugin has a button that will allow you to buy Ether from Coinbase.</li>
+            <br>
+            <li>Once you have the plugin installed and Ether deposited you can visit any website that supports the extension and bid on or buy 8-bit-apes. Millionpoundape only ever sells newly minted apes on <a href="https://opensea.io/" class="text-body-link">Opensea.io</a> but owners may choose to sell their apes elsewhere.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="about-page">
+        <div class="about-page-container">
+          <div class="about-page-content">
+            <div class="page-h1 desktop-only">All about millionpoundape</div>
+            <div class="page-h1 mobile-only">All about million pound ape</div>
+            <br>
+            <div>Ape not know much about art but know what he like and that mainly 🍌🍌🍌</div>
+            <br>
+            <div>This ape collaborate with puny human artist as ape has fat fingers so keyboard royal pain in hairy ass.</div>
+            <br>
+            <div>Ape bringing unqiue collection of crypto pixel art to you, so distinguished #NFT buyers and crazy cats from crypto world can collect.</div>
+            <br>
+            <div>Ape also celebrate big hairy balls of <a class="text-body-link" href="https://twitter.com/theroaringkitty">@TheRoaringKitty</a> and smooth brains over at <a href="https://www.reddit.com/r/wallstreetbets" class="text-body-link">R/wallstreetbets</a> spending life savings on $GME and other stonks. These feel like cousins of ape, mainly because strong, handsome, powerful and tiny bit crazy. Ape shout at puny human helper to make nice things to keep in honour of all idiots everywhere.</div>
+            <br>
+            <div>We making limit on numbers of pixelated stuff for you to keep as ape get bored easily. For anouncement follow <a href="https://twitter.com/millionpoundape" class="text-body-link">@millionpoundape</a> on twitter. You keep apes in memory of stupid times we live in now.</div>
+            <br>
+            <div>That is all.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- {% for row in rows %}
+      <p>{{ row.1 }}</p>
+    {% endfor %} -->
   </body>
 </html>
