@@ -233,6 +233,7 @@ div.nav-link-prominent > a {
 }
 .apes-types-attributes-table th:first-child, .apes-types-attributes-table td:first-child {
   width: 200px;
+  text-decoration: none;
 }
 .apes-types-attributes-table th:nth-child(2), .apes-types-attributes-table td:nth-child(2) {
   width: 80px;
@@ -240,11 +241,14 @@ div.nav-link-prominent > a {
 .apes-types-attributes-table th:nth-child(3), .apes-types-attributes-table td:nth-child(3) {
   width: 180px;
 }
-.apes-types-attributes-table > tbody tr:last-child {
+.apes-types-attributes-table > tbody tr:last-child td {
   font-weight: 700;
 }
 .apes-types-attributes-table > tbody tr td:last-child {
   display: flex;
+}
+.apes-types-attributes-table .type-table-link {
+  color: #000;
 }
 .ape-48x48 {
   width: 48px;
@@ -273,7 +277,10 @@ div.nav-link-prominent > a {
 .attr-colored-row:not(:last-child) {
   border-bottom: solid 2px #fff;
 }
-.apes-types-attributes-table > tbody tr:last-child td:not(:first-child) {
+.attr-colored-row td a {
+  color: #000;
+}
+.ape-attributes-table > tbody tr:last-child td:not(:first-child) {
   font-weight: 400;
 }
 .ape-attributes-table th:first-child {
@@ -373,5 +380,8 @@ div.nav-link-prominent > a {
   }
   .attr-colored-row td:last-child {
     padding: inherit;
+  }
+  table.apes-types-attributes-table:first-of-type {
+    margin-left: 24px;
   }
 }

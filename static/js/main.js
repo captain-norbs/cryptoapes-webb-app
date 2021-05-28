@@ -7,23 +7,28 @@ window.onload = function() {
   }
 
   function showPage(urlPath) {
-    switch(urlPath) {
-      case '/ape-types-attributes/':
-        document.querySelector(".ape-types-attributes").classList.remove("hidden");
-        document.querySelector("footer").classList.remove("hidden");
-        break;
-      case '/8-bit-apes/':
-        document.querySelector("._8-bit-apes-page").classList.remove("hidden");
-        document.querySelector("footer").classList.remove("hidden");
-        break;
-      case '/about/':
-        document.querySelector(".about-page").classList.remove("hidden");
-        document.querySelector("footer").classList.remove("hidden");
-        break;
-      case '/':
-        document.querySelector(".homepage").classList.remove("hidden");
-        document.querySelector("footer").classList.add("hidden");
+    if (urlPath.match(/^\/types\/(?:grey|brown|green|cyborg|golden)$/)) {
+      showApeGroup("type", urlPath.substring(7, urlPath.length - 1));
 
+    }
+    else if (urlPath.match(/^\/attributes\/([a-z|-]+)$/)) {
+      showApeGroup("attribute", urlPath.substring(12, urlPath.length - 1));
+    }
+    else if (urlPath == '/ape-types-attributes/') {
+      document.querySelector(".ape-types-attributes").classList.remove("hidden");
+      document.querySelector("footer").classList.remove("hidden");
+    }
+    else if (urlPath == '/8-bit-apes/') {
+      document.querySelector("._8-bit-apes-page").classList.remove("hidden");
+      document.querySelector("footer").classList.remove("hidden");
+    }
+    else if (urlPath == '/about/') {
+      document.querySelector(".about-page").classList.remove("hidden");
+      document.querySelector("footer").classList.remove("hidden");
+    }
+    else if (urlPath == '/') {
+      document.querySelector(".homepage").classList.remove("hidden");
+      document.querySelector("footer").classList.add("hidden");
     }
   }
 
@@ -58,6 +63,17 @@ window.onload = function() {
     return apeLink;
   }
 
+  function titleCase(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        // You do not need to check if i is larger than splitStr length, as your for does that for you
+        // Assign it back to the array
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+    }
+    // Directly return the joined string
+    return splitStr.join(' '); 
+ }
+
   let urlPath = window.location.pathname;
   showPage(urlPath);
 
@@ -71,6 +87,7 @@ window.onload = function() {
   }
   randomArr = shuffle(randomArr);
 
+  // below is for creating apes types and attributes page
   let beardAttrs = {"Black Beard": {"count": 0, "files": []}, "Brown Beard": {"count": 0, "files": []}, "White Beard": {"count": 0, "files": []}, "Blonde Beard": {"count": 0, "files": []}, "Black Goatee": {"count": 0, "files": []},
     "Red Goatee": {"count": 0, "files": []}, "White Goatee": {"count": 0, "files": []}, "Blonde Goatee": {"count": 0, "files": []}, "Blonde Chin": {"count": 0, "files": []}, "Black Chin": {"count": 0, "files": []}, "Red Chin": {"count": 0, "files": []},
     "Blonde Diamond": {"count": 0, "files": []}, "Black Diamond": {"count": 0, "files": []}, "White Diamond": {"count": 0, "files": []}};
@@ -258,5 +275,38 @@ window.onload = function() {
       prevElem = rowElem;
     }
     prevElem = prevElem.nextElementSibling;
+  }
+
+
+  function showApeGroup(typeOrAttr, typeOrAttrName) {
+    if (typeOrAttr == "type")
+      document.querySelector(".ape-specific-type-attribute a.breadcrumb-type-attr").innerText = "Types";
+    else if (typeOrAttr == "attribute")
+      document.querySelector(".ape-specific-type-attribute a.breadcrumb-type-attr").innerText = "Attributes";
+
+    typeOrAttrName = typeOrAttrName.replaceAll("-", " ");
+    typeOrAttrName = titleCase(typeOrAttrName);
+
+    let typeOrAttrNameElems = document.querySelectorAll(".specific-type-or-attr");
+    for (let i = 0; i < typeOrAttrNameElems.length; i++) {
+      typeOrAttrNameElems[i].innerText = typeOrAttrName;
+    }
+
+    let apesInGroup = apes.filter(function(ape) {
+      if (typeOrAttr == "type") {
+        return ape[1] == typeOrAttrName + " Ape";
+      }
+      else if (typeOrAttr == "attribute") {
+        return ape[2] == typeOrAttrName || ape[3] == typeOrAttrName || ape[4] == typeOrAttrName || 
+        ape[5] == typeOrAttrName || ape[6] == typeOrAttrName || ape[7] == typeOrAttrName || 
+        ape[8] == typeOrAttrName || ape[9] == typeOrAttrName || ape[10] == typeOrAttrName;
+      }
+      else return false;
+    });
+
+    document.querySelector(".apes-type-attr-count").innerText = apesInGroup.length;
+
+    
+    
   }
 };
