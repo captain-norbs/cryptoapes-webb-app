@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^3#f8q8)3+9b^+$gwebpzj=(0ak^9t_u0xf-d1lht@hz1(2f2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # convert to env variable
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -118,6 +118,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
+
+if not DEBUG:
+    STATIC_ROOT = "/var/www/crypto_apes/static"
 
 STATIC_URL = '/static/'
 

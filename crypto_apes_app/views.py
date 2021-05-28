@@ -34,9 +34,9 @@ def select_all(conn):
     # for row in rows:
     #     print(row)
 
-def index(request):
+def index(request, path=""):
     conn = create_connection(settings.SQLITE_PATH)
     rows = select_all(conn)
     print(rows[0])
-    context = {"rows": rows}
+    context = {"apes": rows}
     return render(request, 'crypto_apes_app/index.html', context)

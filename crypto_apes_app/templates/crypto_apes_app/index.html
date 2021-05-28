@@ -5,176 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="ROBOTS" content="ALL" />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    
     <script src="https://kit.fontawesome.com/fa7221f93f.js" crossorigin="anonymous"></script>
-    <style>
-      body {
-        font-family: 'Roboto', 'Open Sans', sans-serif;
-        min-height: 100vh;
-      }
-      nav {
-        display: inline-block;
-        width: 100%;
-      }
-      .nav-links, .nav-links-left {
-        display: flex;
-        align-items: center;
-      }
-      .nav-links {
-        margin: 52px;
-        justify-content: space-between;
-        max-width: 1440px;
-      }
-      .nav-links-left {
-        justify-content: space-between;
-      }
-      .nav-links-left > .nav-link {
-        margin-left: 40px;
-      }
-      div.nav-link > a {
-        text-decoration: underline;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 24px;
-        color: #2A0000;
-
-      }
-      div.nav-link.selected > a {
-        text-decoration: none;
-      }
-      div.nav-link-prominent > a {
-        text-decoration: none;
-        padding: 8px 24px;
-        background: #97E490;
-        border: 2px solid #000000;
-        box-sizing: border-box;
-        box-shadow: 4px 4px 0px #000000;
-      }
-      .homepage-blurb {
-        font-size: 64px;
-        margin: auto;
-        max-width: 640px;
-        font-weight: 700;
-        margin-top: 192px;
-      }
-      .homepage-link {
-        display: flex;
-        margin-top: 140px;
-      }
-      .homepage-link > a {
-        background: #FFFFFF;
-        border: 2px solid #000000;
-        box-sizing: border-box;
-        box-shadow: 4px 4px 0px #000000;
-        color: #000;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 26px 24px;
-        margin: auto;
-      }
-      ._8-bit-apes-page {
-        display: flex;
-        justify-content: center;
-      
-      }
-      ._8-bit-apes-intro, .about-page-content {
-        max-width: 640px;
-      }
-      .text-body-link {
-        color: #000;
-        font-weight: 700;
-      }
-      .page-h1 {
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 63px;
-      }
-      .page-h2 {
-        font-weight: 700;
-        font-size: 36px;
-        line-height: 56px;
-      }
-      .sample-ape {
-        display: flex;
-      }
-      .sample-ape-img {
-        margin-right: 40px;
-      }
-      .sample-ape-text {
-        font-weight: 700;
-      }
-      .cta-link {
-        display: flex;
-        justify-content: center;
-      }
-      .cta-link > a {
-        background: #FFFFFF;
-        border: 2px solid #000000;
-        box-sizing: border-box;
-        box-shadow: 4px 4px 0px #000000;
-        padding: 20px 24px;
-        text-decoration: none;
-      }
-      .cta-link > a > span {
-        padding: 20px 24px;
-        font-size: 18px;
-        font-weight: 700;
-        color: #000;
-      }
-      .marketplace-instructions {
-        padding-inline-start: 16px;
-      }
-      .about-page-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 52px;
-      }
-      .mobile-only {
-        display: none;
-      }
-      .desktop-only {
-        display: block;
-      }
-      @media only screen and (max-width: 776px) {
-        .nav-links, .nav-links-left {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .nav-links {
-          margin: 14px 16px;
-          position: relative;
-        }
-        .nav-links-left > .nav-link {
-          margin-left: 0;
-        }
-        .nav-link {
-          margin-bottom: 11px;
-        }
-        .nav-link-prominent {
-          position: absolute;
-          right: 0;
-          bottom: 0;
-        }
-        .mobile-only {
-          display: block;
-        }
-        .desktop-only {
-          display: none;
-        }
-        .nav-separator {
-          height: 4px;
-          margin-left: -8px;
-          width: 105%;
-          background-color: rgba(0, 0, 0, 0.15);
-        }
-        .homepage, ._8-bit-apes-page, .about-page {
-          padding: 0 16px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <script type="application/javascript" src="/static/js/main.js"></script>
   </head>
   <body>
     <nav>
@@ -188,17 +22,16 @@
         </div>
       </div>
     </nav>
-    <div class="mobile-only nav-separator"></div>
     <div class="content-wrapper">
-      <div class="homepage" style="display:none;">
+      <div class="homepage hidden">
         <div class="homepage-blurb">
           "You want truth, you can't handle truth"
         </div>
         <div class="homepage-link">
-          <a href="/8-bit-apes">8-bit apes</a>
+          <a href="/8-bit-apes"><img src="/static/images/ape-WSB.png"><span>8-bit apes</span></a>
         </div>
       </div>
-      <div class="_8-bit-apes-page" style="display:none;">
+      <div class="_8-bit-apes-page hidden">
         <div class="_8-bit-apes-intro">
           <div class="page-h1">8-bit apes</div>
           <br>
@@ -206,7 +39,9 @@
           <br>
           <div>They are a new wave in the modern CryptoArt movement. 8-bit-apes are "Non-Fungible Tokens" on the Ethereum network and part of the ERC standard that powers most digital art and collectibles.</div>
           <br>
-          <!-- baner goes here (desktop & mobile) -->
+        </div>
+        <div class="apes-banner-middle"></div>
+        <div class="_8-bit-apes-info">
           <br>
           <div>The 8 bit apes are uniquely hand drawn characters, released in batches. No two are exactly alike and each one of them can be bought and sold on the Ethereum blockchain. They can be purchased from the <a class="text-body-link" href="https://opensea.io">Opensea marketplace</a>. Via this market you can buy or bid on apes for sale.</div>
           <br>
@@ -218,29 +53,33 @@
           <br>
           <div class="sample-ape-list">
             <div class="sample-ape">
-              <div class="sample-ape-img">img here</div>
+              <div class="sample-ape-img"><img src="/static/images/ape-golden.png"></div>
               <div class="sample-ape-text">
-                GOLDEN apes are the rarest of apes and the pure 24-carat-ape (zero trait) is the rarest of all.
+                <span>GOLDEN apes are the rarest of apes and the pure 24-carat-ape (zero trait) is the rarest of all.</span>
               </div>
             </div>
             <br>
             <div class="sample-ape">
-              <div class="sample-ape-img">img here</div>
+              <div class="sample-ape-img"><img src="/static/images/ape-WSB.png"></div>
               <div class="sample-ape-text">
-                WSB apes are identified by the red bandanna.
+                <span>WSB apes are identified by the red bandanna.</span>
               </div>
             </div>
             <br>
             <div class="sample-ape">
-              <div class="sample-ape-img">img here</div>
+              <div class="sample-ape-img"><img src="/static/images/ape-Roaring-Kitty.png"></div>
               <div class="sample-ape-text">
-                Keep a lookout for our special guest 8-bit-apes like <a class="text-body-link" href="https://www.youtube.com/channel/UC0patpmwYbhcEUap0bTX3JQ">RoaringKitty</a> 👀
+                <span>Keep a lookout for our special guest 8-bit-apes like <a class="text-body-link" href="https://www.youtube.com/channel/UC0patpmwYbhcEUap0bTX3JQ">RoaringKitty</a> 👀</span>
               </div>
             </div>
           </div>
           <br>
           <br>
-          <div class="cta-link"><a href="https://opensea.io"><span>Check out all the different types of ape</span><i class="fas fa-arrow-right"></i></a></div>
+        </div>
+          <div class="ape-tile-background">
+            <div class="cta-link"><a href="/ape-types-attributes"><span>Check out all the different types of ape</span><i class="fas fa-arrow-right"></i></a></div>
+          </div>
+        <div class="_8-bit-apes-info">
           <br>
           <br>
           <div class="page-h2">What all fuss about?</div>
@@ -260,7 +99,7 @@
           </ol>
         </div>
       </div>
-      <div class="about-page">
+      <div class="about-page hidden">
         <div class="about-page-container">
           <div class="about-page-content">
             <div class="page-h1 desktop-only">All about millionpoundape</div>
@@ -277,13 +116,143 @@
             <div>We making limit on numbers of pixelated stuff for you to keep as ape get bored easily. For anouncement follow <a href="https://twitter.com/millionpoundape" class="text-body-link">@millionpoundape</a> on twitter. You keep apes in memory of stupid times we live in now.</div>
             <br>
             <div>That is all.</div>
-            </div>
+            <br>
+            <img src="/static/images/ape-WSB.png">
           </div>
         </div>
       </div>
+      <div class="ape-types-attributes hidden">
+        <div class="ape-types-attributes-container">
+          <div class="page-h1">Types</div>
+          <br>
+          <table class="apes-types-attributes-table">
+            <thead>
+              <th>Type</th>
+              <th>#</th>
+              <th>Minted</th>
+              <th class="desktop-only">Example</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Grey ape</td>
+                <td>4263</td>
+                <td>0</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Brown ape</td>
+                <td>3440</td>
+                <td>0</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Green ape</td>
+                <td>2200</td>
+                <td>0</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Cyborg ape</td>
+                <td>88</td>
+                <td>0</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Golden ape</td>
+                <td>9</td>
+                <td>0</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>TOTAL</td>
+                <td>10,000</td>
+                <td>0</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <br>
+          <div class="page-h1">Attributes</div>
+          <br>
+          <table class="apes-types-attributes-table ape-attributes-table">
+            <thead>
+              <th>Attribute</th>
+              <th>#</th>
+              <th>Minted</th>
+              <th class="desktop-only">Example</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-attr-title">HEAD</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">BEARD</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">MOUTH</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">NOSE</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">CHAIN</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">EYES</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">GLASSES</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">EARS</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="table-attr-title">SHIRT</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="_404-page hidden">
+        <div class="not-found-404">
+          404
+        </div>
+      </div>
     </div>
-    <!-- {% for row in rows %}
-      <p>{{ row.1 }}</p>
-    {% endfor %} -->
+    <footer>
+      <div class="footer-container">
+        <div>Website published May 2021</div>
+        <div>All images and content &copy; copyright, duplication prohibited</div>
+      </div>
+    </footer>
+    {{ apes|json_script:"apes" }}
   </body>
 </html>
