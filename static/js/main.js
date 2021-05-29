@@ -4,15 +4,26 @@ window.onload = function() {
     document.querySelector(".homepage").classList.add("hidden");
     document.querySelector("._8-bit-apes-page").classList.add("hidden");
     document.querySelector(".about-page").classList.add("hidden");
+    document.querySelector(".ape-types-attributes").classList.add("hidden");
+    document.querySelector(".ape-specific-type-attribute").classList.add("hidden");
+    document.querySelector(".individual-ape-page").classList.add("hidden");
   }
 
   function showPage(urlPath) {
-    if (urlPath.match(/^\/types\/(?:grey|brown|green|cyborg|golden)$/)) {
-      showApeGroup("type", urlPath.substring(7, urlPath.length - 1));
-
+    if (urlPath.match(/^\/apes\/ape-[0-9][0-9][0-9][0-9]\/$/)) {
+      showIndividualApe(urlPath.substring(10, urlPath.length - 1));
+      document.querySelector(".individual-ape-page").classList.remove("hidden");
+      document.querySelector("footer").classList.remove("hidden");
     }
-    else if (urlPath.match(/^\/attributes\/([a-z|-]+)$/)) {
+    else if (urlPath.match(/^\/types\/(?:grey|brown|green|cyborg|golden)\/$/)) {
+      showApeGroup("type", urlPath.substring(7, urlPath.length - 1));
+      document.querySelector(".ape-specific-type-attribute").classList.remove("hidden");
+      document.querySelector("footer").classList.remove("hidden");
+    }
+    else if (urlPath.match(/^\/attributes\/([a-z|-]+)\/$/)) {
       showApeGroup("attribute", urlPath.substring(12, urlPath.length - 1));
+      document.querySelector(".ape-specific-type-attribute").classList.remove("hidden");
+      document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/ape-types-attributes/') {
       document.querySelector(".ape-types-attributes").classList.remove("hidden");
@@ -51,13 +62,16 @@ window.onload = function() {
     return array;
   }
 
-  function drawApeImgs(fileName, imgCount) {
+  function drawApeImgs(fileName, imgCount, customClass) {
     let apeLink = document.createElement("A");
     apeLink.setAttribute("href", "/apes/" + fileName);
+    if (customClass)
+      apeLink.classList.add("apeLink-group");
     apeLink.classList.add("apeLink");
     if (imgCount > 1) apeLink.classList.add("desktop-only");
     let apeImg = document.createElement("IMG");
     apeImg.classList.add("ape-48x48");
+    apeImg.setAttribute("loading", "lazy");
     apeImg.setAttribute("src", "/static/images/apes/" + fileName + ".png");
     apeLink.appendChild(apeImg);
     return apeLink;
@@ -74,13 +88,9 @@ window.onload = function() {
     return splitStr.join(' '); 
  }
 
-  let urlPath = window.location.pathname;
-  showPage(urlPath);
+  const apes = JSON.parse(document.getElementById("apes").innerText);
 
   // fill random apes in example section of types and attributes page
-  let apes = JSON.parse(document.getElementById("apes").innerText);
-  console.log(apes);
-
   let randomArr = [];
   for (let i = 0; i < 10000; i++) {
     randomArr.push(i);
@@ -200,7 +210,7 @@ window.onload = function() {
 
       let attrLink = document.createElement("A");
       attrLink.innerText = attrKeys[j][i];
-      attrLink.setAttribute("href", "/attribute/" + attrKeys[j][i].toLowerCase().replace(" ", "-"));
+      attrLink.setAttribute("href", "/attributes/" + attrKeys[j][i].toLowerCase().replace(" ", "-"));
       tdAttrName.appendChild(attrLink);
       if (j == 0) {
         tdAttrCount.innerText = headAttrs[attrKeys[j][i]]["count"];
@@ -277,6 +287,8 @@ window.onload = function() {
     prevElem = prevElem.nextElementSibling;
   }
 
+  let urlPath = window.location.pathname;
+  showPage(urlPath);
 
   function showApeGroup(typeOrAttr, typeOrAttrName) {
     if (typeOrAttr == "type")
@@ -306,7 +318,107 @@ window.onload = function() {
 
     document.querySelector(".apes-type-attr-count").innerText = apesInGroup.length;
 
+    for (let i = 0; i < apesInGroup.length; i++) {
+      let apeAnc = drawApeImgs(apesInGroup[i][20], 1, "apeLink-group");
+      document.querySelector(".ape-img-group").appendChild(apeAnc);
+    }
     
-    
+  }
+
+  function getTypePercent(apeType) {
+    if (apeType == "Grey Ape") {
+      return "43%";
+    }
+    else if (apeType == "Brown Ape") {
+      return "34%";
+    }
+    else if (apeType == "Green Ape") {
+      return "22%";
+    }
+    else if (apeType == "Cyborg Ape") {
+      return "0.88%";
+    }
+    else if (apeType == "Golden Ape") {
+      return "0.09%";
+    }
+    return;
+  }
+
+  function getAttributePercent(count) {
+    if (count < 100) {
+      return (count/10000 * 100).toFixed(2) + "%";
+    }
+    else if (count < 1000) {
+      return (count/10000 * 100).toFixed(1) + "%";
+    }
+    else {
+      return (count/10000 * 100).toFixed(0) + "%";
+    }
+  }
+
+  function showIndividualApe(apeId) {
+    let ape = apes[parseInt(apeId)];
+    let apeType = ape[1].split(" ")[0];
+    document.querySelector(".individual-ape-id").innerText = "#" + parseInt(apeId);
+    document.querySelector(".individual-breadcrumb-types-specific").innerText = apeType;
+    document.querySelector(".individual-breadcrumb-types-specific").setAttribute("href", "/types/" + apeType.toLowerCase());
+    document.querySelector(".ape-individual-page-img").style.backgroundImage = "url('/static/images/apes/ape-"+ apeId + ".png')";
+    let propertyCards = document.querySelectorAll(".ape-property-card-propname");
+    let apeProperties = [ape[1], ape[2], ape[3]];
+    for (let i = 0; i < propertyCards.length; i++) {
+      propertyCards[i].innerText = apeProperties[i];
+    }
+    let propertyPercentElems = document.querySelectorAll(".ape-property-card-percent");
+    let apePropertyPercents = [getTypePercent(ape[1]), getAttributePercent(eyesAttrs[ape[2]]["count"]), getAttributePercent(mouthAttrs[ape[3]]["count"])];
+    for (let i = 0; i < propertyPercentElems.length; i++) {
+      propertyPercentElems[i].innerText = apePropertyPercents[i];
+    }
+    let apeAttrs = [ape[5], ape[9], ape[4], ape[7], ape[10], ape[8], ape[6]];
+
+    for (let i = 0; i < apeAttrs.length; i++) {
+      if (apeAttrs[i]) {
+        if (i == 2) {
+          apeAttrs[i] = {type: "SHIRT", name: apeAttrs[i], percent: getAttributePercent(shirtAttrs[apeAttrs[i]]["count"])};
+        }
+        else if (i == 0) {
+          apeAttrs[i] = {type: "HEAD", name: apeAttrs[i], percent: getAttributePercent(headAttrs[apeAttrs[i]]["count"])};
+        }
+        else if (i == 6) {
+          apeAttrs[i] = {type: "BEARD", name: apeAttrs[i], percent: getAttributePercent(beardAttrs[apeAttrs[i]]["count"])};
+        }
+        else if (i == 3) {
+          apeAttrs[i] = {type: "EARS", name: apeAttrs[i], percent: getAttributePercent(earAttrs[apeAttrs[i]]["count"])};
+        }
+        else if (i == 5) {
+          apeAttrs[i] = {type: "NOSE", name: apeAttrs[i], percent: getAttributePercent(noseAttrs[apeAttrs[i]]["count"])};
+        }
+        else if (i == 1) {
+          apeAttrs[i] = {type: "GLASSES", name: apeAttrs[i], percent: getAttributePercent(glassesAttrs[apeAttrs[i]]["count"])};
+        }
+        else if (i == 4) {
+          apeAttrs[i] = {type: "CHAIN", name: apeAttrs[i], percent: getAttributePercent(chainAttrs[apeAttrs[i]]["count"])};
+        }
+      }
+    }
+    document.querySelector(".ape-individual-attr-count").innerText = ape[11] + "/7";
+    for (let i = 0; i < apeAttrs.length; i++) {
+      if (apeAttrs[i] == "") continue;
+      let attrCard = document.createElement("DIV");
+      attrCard.classList.add("ape-attribute-card");
+      let attrType = document.createElement("DIV");
+      attrType.innerText = apeAttrs[i].type;
+      let attrName = document.createElement("DIV");
+      attrName.innerText = apeAttrs[i].name;
+      attrName.classList.add("ape-attribute-card-propname");
+      let attrPcnt = document.createElement("DIV");
+      attrPcnt.innerText = apeAttrs[i].percent;
+      attrPcnt.classList.add("ape-attribute-card-percent");
+
+      attrCard.appendChild(attrType);
+      attrCard.appendChild(attrName);
+      attrCard.appendChild(attrPcnt);
+      document.querySelector(".ape-individual-page-attributes-container").appendChild(attrCard);
+    }
+    document.querySelector(".ape-individual-stat-rating").innerText = ape[12];
   }
 };

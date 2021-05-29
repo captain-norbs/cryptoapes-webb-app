@@ -286,6 +286,63 @@ div.nav-link-prominent > a {
 .ape-attributes-table th:first-child {
   padding-left: 16px;
 }
+.individual-ape-page-container {
+  margin-top: 176px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.breadcrumb-type-attr, .individual-breadcrumb-types, .individual-breadcrumb-types-specific {
+  color: #000;
+}
+.ape-specific-count-detail {
+  font-size: 18px;
+  font-weight: 700;
+}
+.ape-img-group {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.ape-individual-page-img {
+  background-color: #97b1c0;
+  height: 376px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 336px 336px;
+}
+.ape-individual-page-subheading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+.ape-individual-page-properties-container, .ape-individual-page-attributes-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ape-property-card, .ape-attribute-card {
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 700;
+  padding: 6px 18px;
+  text-align: center;
+  width: 158px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+.ape-property-card {
+  background-color: #eef4f7;
+}
+.ape-attribute-card {
+  background-color: #76D6FF;
+}
+.ape-property-card:not(:nth-child(3n)), .ape-attribute-card:not(:nth-child(3n)) {
+  margin-right: 16px;
+}
+.ape-individual-stats-heading, .ape-individual-born-heading {
+  padding-bottom: 16px;
+}
 .hidden {
   display: none !important;
 }
@@ -383,5 +440,47 @@ div.nav-link-prominent > a {
   }
   table.apes-types-attributes-table:first-of-type {
     margin-left: 24px;
+  }
+  .ape-specific-count-detail {
+    margin: 0 24px;
+  }
+  .ape-img-group-container {
+    margin-left: 24px;
+  }
+  .apeLink-group {
+    margin-right: 16px !important;
+  }
+  .apeLink-group:nth-child(5n) {
+    margin-right: 0;
+  }
+  .footer-container {
+    font-size: 12px;
+    line-height: 32px;
+    flex-direction: column;
+    margin: 24px;
+  }
+  .ape-property-card, .ape-attribute-card {
+    width: 148px;
+    margin-bottom: 16px;
+  }
+  .individual-ape-page-container > .page-h1 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .ape-individual-page-img {
+    background-size: 312px 312px;
+  }
+  .individual-ape-page-container {
+    padding: 16px;
+  }
+  .ape-individual-page-img {
+    height: 312px;
+  }
+  .ape-property-card:not(:nth-child(3n)), .ape-attribute-card:not(:nth-child(3n)) {
+    margin-right: 0;
+  }
+  .ape-property-card:nth-child(odd), .ape-attribute-card:nth-child(odd) {
+    margin-right: 16px;
+    margin-bottom: 16px;
   }
 }
