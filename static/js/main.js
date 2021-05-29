@@ -11,35 +11,61 @@ window.onload = function() {
 
   function showPage(urlPath) {
     if (urlPath.match(/^\/apes\/ape-[0-9][0-9][0-9][0-9]\/$/)) {
+      unselectAllNavLinks();
+      hideAllpages();
       showIndividualApe(urlPath.substring(10, urlPath.length - 1));
       document.querySelector(".individual-ape-page").classList.remove("hidden");
       document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath.match(/^\/types\/(?:grey|brown|green|cyborg|golden)\/$/)) {
+      unselectAllNavLinks();
+      hideAllpages();
       showApeGroup("type", urlPath.substring(7, urlPath.length - 1));
       document.querySelector(".ape-specific-type-attribute").classList.remove("hidden");
       document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath.match(/^\/attributes\/([a-z|-]+)\/$/)) {
+      unselectAllNavLinks();
+      hideAllpages();
       showApeGroup("attribute", urlPath.substring(12, urlPath.length - 1));
       document.querySelector(".ape-specific-type-attribute").classList.remove("hidden");
       document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/ape-types-attributes/') {
+      unselectAllNavLinks();
+      hideAllpages();
       document.querySelector(".ape-types-attributes").classList.remove("hidden");
       document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/8-bit-apes/') {
+      unselectAllNavLinks();
+      hideAllpages();
+      document.querySelector(".nav-links-left > .nav-link:nth-child(1)").classList.add("selected");
       document.querySelector("._8-bit-apes-page").classList.remove("hidden");
       document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/about/') {
+      unselectAllNavLinks();
+      hideAllpages();
+      document.querySelector(".nav-links-left > .nav-link:nth-child(2)").classList.add("selected");
       document.querySelector(".about-page").classList.remove("hidden");
       document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/') {
+      unselectAllNavLinks();
+      hideAllpages();
+      document.querySelector(".nav-links > .nav-link").classList.add("selected");
       document.querySelector(".homepage").classList.remove("hidden");
       document.querySelector("footer").classList.add("hidden");
+    }
+    window.scrollTo(0,0);
+  }
+
+  function unselectAllNavLinks() {
+    document.querySelector(".nav-links > .nav-link").classList.remove("selected");
+    let leftLinks = document.querySelectorAll(".nav-links-left > .nav-link");
+    for (let i = 0; i < leftLinks.length; i++) {
+      leftLinks[i].classList.remove("selected");
     }
   }
 
@@ -65,6 +91,7 @@ window.onload = function() {
   function drawApeImgs(fileName, imgCount, customClass) {
     let apeLink = document.createElement("A");
     apeLink.setAttribute("href", "/apes/" + fileName);
+    apeLink.classList.add("internal-link");
     if (customClass)
       apeLink.classList.add("apeLink-group");
     apeLink.classList.add("apeLink");
@@ -211,6 +238,7 @@ window.onload = function() {
       let attrLink = document.createElement("A");
       attrLink.innerText = attrKeys[j][i];
       attrLink.setAttribute("href", "/attributes/" + attrKeys[j][i].toLowerCase().replace(" ", "-"));
+      attrLink.classList.add("internal-link");
       tdAttrName.appendChild(attrLink);
       if (j == 0) {
         tdAttrCount.innerText = headAttrs[attrKeys[j][i]]["count"];
@@ -318,6 +346,9 @@ window.onload = function() {
 
     document.querySelector(".apes-type-attr-count").innerText = apesInGroup.length;
 
+    while (document.querySelector(".ape-img-group").firstChild) {
+      document.querySelector(".ape-img-group").removeChild(document.querySelector(".ape-img-group").firstChild);
+    }
     for (let i = 0; i < apesInGroup.length; i++) {
       let apeAnc = drawApeImgs(apesInGroup[i][20], 1, "apeLink-group");
       document.querySelector(".ape-img-group").appendChild(apeAnc);
@@ -420,5 +451,29 @@ window.onload = function() {
       document.querySelector(".ape-individual-page-attributes-container").appendChild(attrCard);
     }
     document.querySelector(".ape-individual-stat-rating").innerText = ape[12];
+  }
+
+  window.onpopstate = function() {
+    let urlPath = window.location.pathname;
+    showPage(urlPath);
+  };
+
+  let internalLinks = document.querySelectorAll(".internal-link");
+  for (let i = 0; i < internalLinks.length; i++) {
+    internalLinks[i].addEventListener("click", function(evt) {
+      evt.preventDefault();
+      let newPath;
+      try {
+        newPath = new URL(evt.target.href);
+      }
+      catch {
+        newPath = new URL(evt.target.parentElement.href);
+      }
+      newPath = newPath.pathname;
+      if (newPath[newPath.length - 1] != "/")
+        newPath += "/";
+      history.pushState({}, document.title, newPath);
+      showPage(newPath);
+    })
   }
 };
