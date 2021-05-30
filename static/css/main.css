@@ -494,7 +494,7 @@ div.nav-link-prominent > a:focus {
     padding: 0;
   }
   .apes-banner-middle {
-    background-image: url("/static/images/apes-banner-mobile.png"); /* update image */
+    background-image: url("/static/images/apes-large-mob.png");
   }
 }
 
