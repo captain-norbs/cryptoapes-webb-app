@@ -22,3 +22,6 @@ class Cryptoape(models.Model):
     ETH_base_price = models.FloatField(null=False)
     ETH_base_price_with_multiplier = models.FloatField(null=False)
     File = models.CharField(max_length=200, null=False)
+
+    def __str__(self):
+        return "Cryptoape #" + str(self.id)

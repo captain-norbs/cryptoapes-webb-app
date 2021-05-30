@@ -3,7 +3,6 @@ window.onload = function() {
   function hideAllpages() {
     document.querySelector(".homepage").classList.add("hidden");
     document.querySelector("._8-bit-apes-page").classList.add("hidden");
-    document.querySelector(".about-page").classList.add("hidden");
     document.querySelector(".ape-types-attributes").classList.add("hidden");
     document.querySelector(".ape-specific-type-attribute").classList.add("hidden");
     document.querySelector(".individual-ape-page").classList.add("hidden");
@@ -15,48 +14,36 @@ window.onload = function() {
       hideAllpages();
       showIndividualApe(urlPath.substring(10, urlPath.length - 1));
       document.querySelector(".individual-ape-page").classList.remove("hidden");
-      document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath.match(/^\/types\/(?:grey|brown|green|cyborg|golden)\/$/)) {
       unselectAllNavLinks();
       hideAllpages();
       showApeGroup("type", urlPath.substring(7, urlPath.length - 1));
       document.querySelector(".ape-specific-type-attribute").classList.remove("hidden");
-      document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath.match(/^\/attributes\/([a-z|-]+)\/$/)) {
       unselectAllNavLinks();
       hideAllpages();
       showApeGroup("attribute", urlPath.substring(12, urlPath.length - 1));
       document.querySelector(".ape-specific-type-attribute").classList.remove("hidden");
-      document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/ape-types-attributes/') {
       unselectAllNavLinks();
       hideAllpages();
+      document.querySelector(".nav-links-left > .nav-link:nth-child(2)").classList.add("selected");
       document.querySelector(".ape-types-attributes").classList.remove("hidden");
-      document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/8-bit-apes/') {
       unselectAllNavLinks();
       hideAllpages();
       document.querySelector(".nav-links-left > .nav-link:nth-child(1)").classList.add("selected");
       document.querySelector("._8-bit-apes-page").classList.remove("hidden");
-      document.querySelector("footer").classList.remove("hidden");
-    }
-    else if (urlPath == '/about/') {
-      unselectAllNavLinks();
-      hideAllpages();
-      document.querySelector(".nav-links-left > .nav-link:nth-child(2)").classList.add("selected");
-      document.querySelector(".about-page").classList.remove("hidden");
-      document.querySelector("footer").classList.remove("hidden");
     }
     else if (urlPath == '/') {
       unselectAllNavLinks();
       hideAllpages();
       document.querySelector(".nav-links > .nav-link").classList.add("selected");
       document.querySelector(".homepage").classList.remove("hidden");
-      document.querySelector("footer").classList.add("hidden");
     }
     window.scrollTo(0,0);
   }
@@ -99,7 +86,7 @@ window.onload = function() {
     let apeImg = document.createElement("IMG");
     apeImg.classList.add("ape-48x48");
     apeImg.setAttribute("loading", "lazy");
-    apeImg.setAttribute("src", "/static/images/apes/" + fileName + ".png");
+    apeImg.setAttribute("src", "/static/images/apes-2x/" + fileName + ".png");
     apeLink.appendChild(apeImg);
     return apeLink;
   }
@@ -393,7 +380,7 @@ window.onload = function() {
     document.querySelector(".individual-ape-id").innerText = "#" + parseInt(apeId);
     document.querySelector(".individual-breadcrumb-types-specific").innerText = apeType;
     document.querySelector(".individual-breadcrumb-types-specific").setAttribute("href", "/types/" + apeType.toLowerCase());
-    document.querySelector(".ape-individual-page-img").style.backgroundImage = "url('/static/images/apes/ape-"+ apeId + ".png')";
+    document.querySelector(".ape-individual-page-img").style.backgroundImage = "url('/static/images/apes-14x/ape-"+ apeId + ".png')";
     let propertyCards = document.querySelectorAll(".ape-property-card-propname");
     let apeProperties = [ape[1], ape[2], ape[3]];
     for (let i = 0; i < propertyCards.length; i++) {

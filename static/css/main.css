@@ -24,6 +24,7 @@ body {
   font-family: 'Roboto Mono', 'Open Sans', sans-serif;
   min-height: 100vh;
   line-height: 32px;
+  margin: 0;
 }
 nav {
   display: inline-block;
@@ -79,23 +80,19 @@ div.nav-link.selected > a {
 div.nav-link-prominent > a {
   text-decoration: none;
   padding: 8px 24px;
-  background: #97E490;
+  background-color: #97E490;
   border: 2px solid #000000;
   box-sizing: border-box;
   box-shadow: 4px 4px 0px #000000;
 }
-.homepage-blurb {
-  font-size: 64px;
-  margin: auto;
-  max-width: 640px;
-  font-weight: 700;
-  margin-top: 320px;
-  text-align: center;
-  line-height: 84px;
+div.nav-link-prominent > a:hover {
+  background-color: #76D6FF;
+}
+div.nav-link-prominent > a:focus {
+  box-shadow: none;
 }
 .homepage-link {
   display: flex;
-  margin-top: 140px;
 }
 .homepage-link > a {
   background: #fff;
@@ -110,6 +107,7 @@ div.nav-link-prominent > a {
   margin: auto;
   display: flex;
   align-items: center;
+  margin-left: 0;
 }
 .homepage-link > a:hover {
   background-color: #76D6FF;
@@ -124,16 +122,15 @@ div.nav-link-prominent > a {
 ._8-bit-apes-intro {
   margin-top: 181px;
 }
-._8-bit-apes-intro, ._8-bit-apes-info, .about-page-content {
+._8-bit-apes-intro, ._8-bit-apes-info, .homepage-content {
   max-width: 640px;
 }
 .apes-banner-middle {
-  width: 100%;
+  width: 100vw;
   height: 384px;
   background-image: url("/static/images/apes-large.png");
   object-fit: cover;
   background-position: center;
-
 }
 .text-body-link {
   color: #000;
@@ -182,9 +179,9 @@ div.nav-link-prominent > a {
   color: #000;
 }
 .marketplace-instructions {
-  padding-inline-start: 16px;
+  padding-inline-start: 27px;
 }
-.about-page-container {
+.homepage-container {
   display: flex;
   justify-content: center;
   margin-top: 180px;
@@ -200,7 +197,7 @@ div.nav-link-prominent > a {
   justify-content: center;
   align-items: center;
   height: 540px;
-  width: 100%;
+  width: 100vw;
   background-image: url('/static/images/Tile.png');
   background-color: #76D6FF;
   background-repeat: repeat;
@@ -365,14 +362,19 @@ div.nav-link-prominent > a {
 
 
 
-@media only screen and (max-width: 776px) {
+@media only screen and (max-width: 900px) {
   nav {
-    margin-left: -8px;
     border-bottom: solid 4px rgba(0, 0, 0, 0.15);
   }
   .page-h1 {
     font-size: 36px;
     line-height: 56px;
+  }
+  .homepage-container {
+    margin-top: 228px;
+  }
+  ._8-bit-apes-intro {
+    margin-top: 228px;
   }
   div.nav-link > a {
     font-size: 16px;
@@ -400,11 +402,11 @@ div.nav-link-prominent > a {
   .desktop-only {
     display: none;
   }
-  .homepage, ._8-bit-apes-page, .about-page {
-    padding: 0 16px;
+  ._8-bit-apes-page, .homepage {
+    padding: 0 24px;
   }
   .ape-types-attributes-container {
-    margin: 204px -8px 0 -8px;
+    margin-top: 220px;
   }
   .apes-types-attributes-table th {
     font-size: 16px;
@@ -438,7 +440,7 @@ div.nav-link-prominent > a {
   .attr-colored-row td:last-child {
     padding: inherit;
   }
-  table.apes-types-attributes-table:first-of-type {
+  .apes-types-attributes-table-container {
     margin-left: 24px;
   }
   .ape-specific-count-detail {
@@ -476,11 +478,32 @@ div.nav-link-prominent > a {
   .ape-individual-page-img {
     height: 312px;
   }
-  .ape-property-card:not(:nth-child(3n)), .ape-attribute-card:not(:nth-child(3n)) {
-    margin-right: 0;
+  .ape-property-card, .ape-attribute-card {
+    margin-right: 16px;
+    margin-bottom: 16px;
   }
+  .cta-link {
+    width: 312px;
+  }
+  .cta-link > a.mobile-only {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+  }
+  .cta-link > a.mobile-only > span {
+    padding: 0;
+  }
+  .apes-banner-middle {
+    background-image: url("/static/images/apes-banner-mobile.png"); /* update image */
+  }
+}
+
+@media only screen and (max-width: 420px) {
   .ape-property-card:nth-child(odd), .ape-attribute-card:nth-child(odd) {
     margin-right: 16px;
     margin-bottom: 16px;
+  }
+  .ape-property-card:nth-child(even), .ape-attribute-card:nth-child(even) {
+    margin-right: 0;
   }
 }
