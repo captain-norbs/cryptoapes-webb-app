@@ -30,13 +30,13 @@ window.onload = function() {
     else if (urlPath == '/ape-types-attributes/') {
       unselectAllNavLinks();
       hideAllpages();
-      document.querySelector(".nav-links-left > .nav-link:nth-child(2)").classList.add("selected");
+      document.querySelector(".nav-links-right > .nav-link:nth-child(2)").classList.add("selected");
       document.querySelector(".ape-types-attributes").classList.remove("hidden");
     }
     else if (urlPath == '/8-bit-apes/') {
       unselectAllNavLinks();
       hideAllpages();
-      document.querySelector(".nav-links-left > .nav-link:nth-child(1)").classList.add("selected");
+      document.querySelector(".nav-links-right > .nav-link:nth-child(1)").classList.add("selected");
       document.querySelector("._8-bit-apes-page").classList.remove("hidden");
     }
     else if (urlPath == '/') {
@@ -50,7 +50,7 @@ window.onload = function() {
 
   function unselectAllNavLinks() {
     document.querySelector(".nav-links > .nav-link").classList.remove("selected");
-    let leftLinks = document.querySelectorAll(".nav-links-left > .nav-link");
+    let leftLinks = document.querySelectorAll(".nav-links-right > .nav-link");
     for (let i = 0; i < leftLinks.length; i++) {
       leftLinks[i].classList.remove("selected");
     }
@@ -462,5 +462,14 @@ window.onload = function() {
       history.pushState({}, document.title, newPath);
       showPage(newPath);
     })
+  }
+};
+
+window.onscroll = function() {
+  if (window.scrollY==0){
+    document.querySelector("nav").style.borderBottom = "none";
+  }
+  else {
+    document.querySelector("nav").style.borderBottom = "solid 4px rgba(0, 0, 0, 0.15)";
   }
 };
