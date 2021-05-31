@@ -420,7 +420,7 @@ window.onload = function() {
     }
     document.querySelector(".ape-individual-attr-count").innerText = ape[11] + "/7";
     for (let i = 0; i < apeAttrs.length; i++) {
-      if (apeAttrs[i] == "") continue;
+      if (!apeAttrs[i]) continue;
       let attrCard = document.createElement("DIV");
       attrCard.classList.add("ape-attribute-card");
       let attrType = document.createElement("DIV");
