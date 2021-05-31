@@ -132,6 +132,11 @@ window.onload = function() {
     "Purple Lipstick": {"count": 0, "files": []}, "Smile": {"count": 0, "files": []}, "Buck Teeth": {"count": 0, "files": []}};
 
   let counts = [0, 0, 0, 0, 0];
+  let greyCount = 0;
+  let brownCount = 0;
+  let greenCount = 0;
+  let cyborgCount = 0;
+  let goldenCount = 0;
   for (let i = 0; i < randomArr.length; i++) {
     if (apes[randomArr[i]][2]) {
       eyesAttrs[apes[randomArr[i]][2]]["count"]++;
@@ -178,9 +183,23 @@ window.onload = function() {
       if (chainAttrs[apes[randomArr[i]][10]]["files"].length < 6)
         chainAttrs[apes[randomArr[i]][10]]["files"].push(apes[randomArr[i]][20]);
     }
-
+    let type = apes[randomArr[i]][1];
+    if (type == 'Grey Ape') {
+      greyCount += 1;
+    }
+    else if (type == 'Brown Ape') {
+      brownCount += 1;
+    }
+    else if (type == 'Green Ape') {
+      greenCount += 1;
+    }
+    else if (type == 'Cyborg Ape') {
+      cyborgCount += 1;
+    }
+    else if (type == 'Golden Ape') {
+      goldenCount += 1;
+    }
     if (!(counts[0] == 6 && counts[1] == 6 && counts[2] == 6 && counts[3] == 6 && counts[4] == 6)) {
-      let type = apes[randomArr[i]][1];
       let idx;
       switch(type) {
         case 'Grey Ape':
@@ -204,8 +223,14 @@ window.onload = function() {
       let apeLink = drawApeImgs(apes[randomArr[i]][20], counts[idx]);
       document.querySelector(".apes-types-attributes-table tbody tr:nth-child(" + (idx+1) + ") td:nth-child(4)").appendChild(apeLink);
     }
-    // gather samples for attribute examples
   }
+
+  document.querySelector(".grey-ape-count").innerText = greyCount;
+  document.querySelector(".brown-ape-count").innerText = brownCount;
+  document.querySelector(".green-ape-count").innerText = greenCount;
+  document.querySelector(".cyborg-ape-count").innerText = cyborgCount;
+  document.querySelector(".golden-ape-count").innerText = goldenCount;
+
   let attrTable = document.querySelector(".apes-types-attributes-table.ape-attributes-table");
     
   let attrKeys = [Object.keys(headAttrs), Object.keys(beardAttrs), Object.keys(mouthAttrs),
