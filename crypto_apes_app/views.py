@@ -25,11 +25,13 @@ def select_all(conn):
     :param conn: the Connection object
     :return:
     """
+    conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     cur.execute("SELECT * FROM crypto_apes_app_cryptoape")
 
     rows = cur.fetchall()
-    return rows
+    result = [dict(row) for row in rows]
+    return result
 
     # for row in rows:
     #     print(row)
@@ -37,6 +39,5 @@ def select_all(conn):
 def index(request, path=""):
     conn = create_connection(settings.SQLITE_PATH)
     rows = select_all(conn)
-    print(rows[0])
     context = {"apes": rows}
     return render(request, 'crypto_apes_app/index.html', context)

@@ -138,52 +138,52 @@ window.onload = function() {
   let cyborgCount = 0;
   let goldenCount = 0;
   for (let i = 0; i < randomArr.length; i++) {
-    if (apes[randomArr[i]][2]) {
-      eyesAttrs[apes[randomArr[i]][2]]["count"]++;
-      if (eyesAttrs[apes[randomArr[i]][2]]["files"].length < 6)
-        eyesAttrs[apes[randomArr[i]][2]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Eyes']) {
+      eyesAttrs[apes[randomArr[i]]['Eyes']]["count"]++;
+      if (eyesAttrs[apes[randomArr[i]]['Eyes']]["files"].length < 6)
+        eyesAttrs[apes[randomArr[i]]['Eyes']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][3]) {
-      mouthAttrs[apes[randomArr[i]][3]]["count"]++;
-      if (mouthAttrs[apes[randomArr[i]][3]]["files"].length < 6)
-        mouthAttrs[apes[randomArr[i]][3]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Mouth']) {
+      mouthAttrs[apes[randomArr[i]]['Mouth']]["count"]++;
+      if (mouthAttrs[apes[randomArr[i]]['Mouth']]["files"].length < 6)
+        mouthAttrs[apes[randomArr[i]]['Mouth']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][4]) {
-      shirtAttrs[apes[randomArr[i]][4]]["count"]++;
-      if (shirtAttrs[apes[randomArr[i]][4]]["files"].length < 6)
-        shirtAttrs[apes[randomArr[i]][4]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Shirt']) {
+      shirtAttrs[apes[randomArr[i]]['Shirt']]["count"]++;
+      if (shirtAttrs[apes[randomArr[i]]['Shirt']]["files"].length < 6)
+        shirtAttrs[apes[randomArr[i]]['Shirt']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][5]) {
-      headAttrs[apes[randomArr[i]][5]]["count"]++;
-      if (headAttrs[apes[randomArr[i]][5]]["files"].length < 6)
-        headAttrs[apes[randomArr[i]][5]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Head']) {
+      headAttrs[apes[randomArr[i]]['Head']]["count"]++;
+      if (headAttrs[apes[randomArr[i]]['Head']]["files"].length < 6)
+        headAttrs[apes[randomArr[i]]['Head']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][6]) {
-      beardAttrs[apes[randomArr[i]][6]]["count"]++;
-      if (beardAttrs[apes[randomArr[i]][6]]["files"].length < 6)
-        beardAttrs[apes[randomArr[i]][6]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Beard']) {
+      beardAttrs[apes[randomArr[i]]['Beard']]["count"]++;
+      if (beardAttrs[apes[randomArr[i]]['Beard']]["files"].length < 6)
+        beardAttrs[apes[randomArr[i]]['Beard']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][7]) {
-      earAttrs[apes[randomArr[i]][7]]["count"]++;
-      if (earAttrs[apes[randomArr[i]][7]]["files"].length < 6)
-        earAttrs[apes[randomArr[i]][7]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Ears']) {
+      earAttrs[apes[randomArr[i]]['Ears']]["count"]++;
+      if (earAttrs[apes[randomArr[i]]['Ears']]["files"].length < 6)
+        earAttrs[apes[randomArr[i]]['Ears']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][8]) {
-      noseAttrs[apes[randomArr[i]][8]]["count"]++;
-      if (noseAttrs[apes[randomArr[i]][8]]["files"].length < 6)
-        noseAttrs[apes[randomArr[i]][8]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Nose']) {
+      noseAttrs[apes[randomArr[i]]['Nose']]["count"]++;
+      if (noseAttrs[apes[randomArr[i]]['Nose']]["files"].length < 6)
+        noseAttrs[apes[randomArr[i]]['Nose']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][9]) {
-      glassesAttrs[apes[randomArr[i]][9]]["count"]++;
-      if (glassesAttrs[apes[randomArr[i]][9]]["files"].length < 6)
-        glassesAttrs[apes[randomArr[i]][9]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Glasses']) {
+      glassesAttrs[apes[randomArr[i]]['Glasses']]["count"]++;
+      if (glassesAttrs[apes[randomArr[i]]['Glasses']]["files"].length < 6)
+        glassesAttrs[apes[randomArr[i]]['Glasses']]["files"].push(apes[randomArr[i]]['File']);
     }
-    if (apes[randomArr[i]][10]) {
-      chainAttrs[apes[randomArr[i]][10]]["count"]++;
-      if (chainAttrs[apes[randomArr[i]][10]]["files"].length < 6)
-        chainAttrs[apes[randomArr[i]][10]]["files"].push(apes[randomArr[i]][20]);
+    if (apes[randomArr[i]]['Chain']) {
+      chainAttrs[apes[randomArr[i]]['Chain']]["count"]++;
+      if (chainAttrs[apes[randomArr[i]]['Chain']]["files"].length < 6)
+        chainAttrs[apes[randomArr[i]]['Chain']]["files"].push(apes[randomArr[i]]['File']);
     }
-    let type = apes[randomArr[i]][1];
+    let type = apes[randomArr[i]]['Type'];
     if (type == 'Grey Ape') {
       greyCount += 1;
     }
@@ -220,7 +220,7 @@ window.onload = function() {
       }
       if (counts[idx] == 6) continue;
       else counts[idx] = counts[idx] + 1;
-      let apeLink = drawApeImgs(apes[randomArr[i]][20], counts[idx]);
+      let apeLink = drawApeImgs(apes[randomArr[i]]['File'], counts[idx]);
       document.querySelector(".apes-types-attributes-table tbody tr:nth-child(" + (idx+1) + ") td:nth-child(4)").appendChild(apeLink);
     }
   }
@@ -362,7 +362,7 @@ window.onload = function() {
       document.querySelector(".ape-img-group").removeChild(document.querySelector(".ape-img-group").firstChild);
     }
     for (let i = 0; i < apesInGroup.length; i++) {
-      let apeAnc = drawApeImgs(apesInGroup[i][20], 1, "apeLink-group");
+      let apeAnc = drawApeImgs(apesInGroup[i]['File'], 1, "apeLink-group");
       document.querySelector(".ape-img-group").appendChild(apeAnc);
     }
     
